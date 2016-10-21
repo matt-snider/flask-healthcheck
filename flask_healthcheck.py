@@ -42,14 +42,23 @@ class HealthCheck:
         return jsonify(response), 200 if ok else 500
 
     @classmethod
-    def register_extension(cls, ext_healthcheck):
-        name = ext_healthcheck.__name__
-        cls.registered_extensions[name] = ext_healthcheck
+    def register_extension(cls, healthcheck_name=None):
+        def decorator(healthcheck_func):
+            ext_name = healthcheck_func.__name__
+            cls.registered_extensions[ext_name] = (healthcheck_name, healthcheck_func)
+            return healthcheck_func
+
+        # If called without parameters
+        if callable(healthcheck_name):
+            healthcheck_func = healthcheck_name
+            healthcheck_name = healthcheck_func.__name__
+            decorator = decorator(healthcheck_func)
+        return decorator
 
     def add_extension(self, ext_name, ext_obj):
         if ext_name not in self.registered_extensions:
             raise ValueError("No built in healthcheck for extension '{}'"
                              .format(ext_name))
-        func = self.registered_extensions[ext_name]
-        self.healthchecks[ext_name] = functools.partial(func, ext_obj)
+        name, func = self.registered_extensions[ext_name]
+        self.healthchecks[name] = functools.partial(func, ext_obj)
 
