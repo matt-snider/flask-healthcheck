@@ -70,3 +70,8 @@ def sqlalchemy(db):
     return True
 
 
+@HealthCheck.register_extension('mongodb')
+def pymongo(mongo):
+    mongo.db.client.server_info()
+    return True
+
