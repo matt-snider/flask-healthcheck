@@ -75,3 +75,9 @@ def pymongo(mongo):
     mongo.db.client.server_info()
     return True
 
+
+@HealthCheck.register_extension
+def redis(db):
+    db.ping()
+    return True
+
