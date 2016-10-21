@@ -62,3 +62,11 @@ class HealthCheck:
         name, func = self.registered_extensions[ext_name]
         self.healthchecks[name] = functools.partial(func, ext_obj)
 
+
+@HealthCheck.register_extension('sql')
+def sqlalchemy(db):
+    with db.engine.connect() as connection:
+        connection.execute('SELECT 1;')
+    return True
+
+
