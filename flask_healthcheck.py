@@ -1,7 +1,10 @@
+import functools
+
 from flask import current_app, jsonify
 
 
 class HealthCheck:
+    registered_extensions = {}
 
     def __init__(self, app=None):
         if app:
@@ -37,4 +40,16 @@ class HealthCheck:
                 response[name]['message'] = message
             ok &= state
         return jsonify(response), 200 if ok else 500
+
+    @classmethod
+    def register_extension(cls, ext_healthcheck):
+        name = ext_healthcheck.__name__
+        cls.registered_extensions[name] = ext_healthcheck
+
+    def add_extension(self, ext_name, ext_obj):
+        if ext_name not in self.registered_extensions:
+            raise ValueError("No built in healthcheck for extension '{}'"
+                             .format(ext_name))
+        func = self.registered_extensions[ext_name]
+        self.healthchecks[ext_name] = functools.partial(func, ext_obj)
 
