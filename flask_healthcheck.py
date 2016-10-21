@@ -15,7 +15,8 @@ class HealthCheck:
         return healthcheck_func
 
     def init_app(self, app):
-        app.add_url_rule('/healthcheck', view_func=self.do_healthcheck)
+        rule = app.config.get('HEALTHCHECK_PATH', '/healthcheck')
+        app.add_url_rule(rule, view_func=self.do_healthcheck)
 
     def do_healthcheck(self):
         response = {}
