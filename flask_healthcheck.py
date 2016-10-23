@@ -76,6 +76,12 @@ def pymongo(mongo):
     return True
 
 
+@HealthCheck.register_extension('mongodb')
+def mongoengine(mongo):
+    mongo.connection.command('ping')
+    return True
+
+
 @HealthCheck.register_extension
 def redis(db):
     db.ping()
