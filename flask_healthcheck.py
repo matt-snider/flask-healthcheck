@@ -72,7 +72,7 @@ def sqlalchemy(db):
 
 @HealthCheck.register_extension('mongodb')
 def pymongo(mongo):
-    mongo.db.client.server_info()
+    mongo.db.command('ping')
     return True
 
 
