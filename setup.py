@@ -3,7 +3,7 @@ from distutils.core import setup
 
 setup(
     name='Flask-Healthcheck',
-    version='0.1.1',
+    version='0.1.2',
     description='Healthchecks for flask applications made easy',
     author='Matt Snider',
     author_email='matt.snider@alum.utoronto.ca',
