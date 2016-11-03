@@ -8,7 +8,7 @@ setup(
     author='Matt Snider',
     author_email='matt.snider@alum.utoronto.ca',
     url='https://github.com/matt-snider/flask-healthcheck',
-    py_modules=['flask_healthcheck'],
+    packages=['flask_healthcheck'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
