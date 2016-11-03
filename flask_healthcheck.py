@@ -3,7 +3,7 @@ import functools
 from flask import current_app, jsonify
 
 
-class HealthCheck:
+class Healthcheck:
     registered_extensions = {}
 
     def __init__(self, app=None):
@@ -63,26 +63,26 @@ class HealthCheck:
         self.healthchecks[name] = functools.partial(func, ext_obj)
 
 
-@HealthCheck.register_extension('sql')
+@Healthcheck.register_extension('sql')
 def sqlalchemy(db):
     with db.engine.connect() as connection:
         connection.execute('SELECT 1;')
     return True
 
 
-@HealthCheck.register_extension('mongodb')
+@Healthcheck.register_extension('mongodb')
 def pymongo(mongo):
     mongo.db.command('ping')
     return True
 
 
-@HealthCheck.register_extension('mongodb')
+@Healthcheck.register_extension('mongodb')
 def mongoengine(mongo):
     mongo.connection.command('ping')
     return True
 
 
-@HealthCheck.register_extension
+@Healthcheck.register_extension
 def redis(db):
     db.ping()
     return True

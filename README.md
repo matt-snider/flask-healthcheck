@@ -1,12 +1,12 @@
 # flask-healthcheck
-Flask-Healtcheck is a [Flask](http://flask.pocoo.org/) extension that provides
+Flask-Healthcheck is a [Flask](http://flask.pocoo.org/) extension that provides
 a simple way of adding healthchecks to a service.
 
 ## Example:
 ```python
 from flask import Flask
 app = Flask(__name__)
-healthcheck = HealthCheck(app)
+healthcheck = Healthcheck(app)
 
 @app.route('/')
 def hello_world():
