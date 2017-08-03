@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: flask-restless
-Source: https://pypi.python.org/pypi/Flask-Restless/
+Upstream-Name: flask-healthcheck
+Source: https://pypi.python.org/pypi/Flask-Healthcheck/
 
 Files: *
 Copyright: 2016, Matt Snider
