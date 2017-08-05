@@ -35,7 +35,7 @@ And, the following if the healthcheck fails:
 ```json
 {
   "connections": {
-    "healthy": true,
+    "healthy": false,
     "message": "Less than 5 active connections"
   }
 }
