@@ -9,6 +9,7 @@ setup(
     author_email='matt.snider@alum.utoronto.ca',
     url='https://github.com/matt-snider/flask-healthcheck',
     packages=['flask_healthcheck'],
+    install_requires=['flask'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
