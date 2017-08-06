@@ -1,0 +1,5 @@
+flask-healthcheck (0.1.2) unstable; urgency=low
+
+  * Initial release
+
+ -- Thomas Sarboni <max-k@post.com>  Thu, 03 Aug 2017 10:52:00 +0100

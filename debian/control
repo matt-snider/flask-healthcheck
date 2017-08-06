@@ -1,0 +1,36 @@
+Source: flask-healthcheck
+Section: python
+Priority: optional
+Maintainer: Matt Snider <matt.snider@alum.utoronto.ca>
+Uploaders: Matt Snider <matt.snider@alum.utoronto.ca>
+Build-Depends:
+ debhelper (>= 9),
+ dh-python,
+ python-all (>= 2.6),
+ python-flask,
+ python-setuptools,
+ python3-all (>= 3.2),
+ python3-flask,
+ python3-setuptools,
+X-Python-Version: >= 2.6
+X-Python3-Version: >= 3.2
+Standards-Version: 3.9.8
+Homepage: https://pypi.python.org/pypi/Flask-Healthcheck/0.1.2
+Vcs-Git: https://github.com/matt-snider/flask-healthcheck.git
+Vcs-Browser: https://github.com/matt-snider/flask-healthcheck
+
+Package: python-flask-healthcheck
+Architecture: all
+Depends:
+ python-flask,
+ ${misc:Depends},
+ ${python:Depends}
+Description: Flask-Healthcheck is a Flask extension that provides a simple way of adding healthchecks to a service.
+
+Package: python3-flask-healthcheck
+Architecture: all
+Depends:
+ python3-flask,
+ ${misc:Depends},
+ ${python3:Depends}
+Description: Flask-Healthcheck is a Flask extension that provides a simple way of adding healthchecks to a service.
